@@ -1,13 +1,78 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import HomeScreen from '../../screens/HomeScreen';
-import ProductDetailsScreen from '../../screens/ProductDetailsScreen';
-import ProfileScreen from '../../screens/ProfileScreen';
+import HomeScreen from '../../screens/App/HomeScreen';
+import ProductDetailsScreen from '../../screens/App/ProductDetailsScreen';
+import ProfileScreen from '../../screens/App/ProfileScreen';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { AntDesign, Feather, FontAwesome5 } from '@expo/vector-icons';
+import SettingsScreen from '../../screens/App/SettingsScreen';
+import colors from '../../config/colors';
+import BasketScreen from '../../screens/App/BasketScreen';
+import SPACING from '../../config/SPACING';
+
+const Tab = createBottomTabNavigator();
+export default function AppStack() {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          elevation: SPACING * 2,
+          /*   height: '8%', */
+          opacity: 0.9,
+          backgroundColor: colors['dark'],
+          borderTopWidth: 0,
+          /*   borderTopRightRadius: SPACING * 2,
+          borderTopLeftRadius: SPACING * 2, */
+        },
+        tabBarInactiveTintColor: colors['white-smoke'],
+        tabBarActiveTintColor: colors.primary,
+      }}
+    >
+      <Tab.Screen
+        name='Tab_Home'
+        component={HomeStack}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <AntDesign name='home' size={24} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name='Tab_Basket'
+        component={BasketScreen}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Feather name='coffee' size={24} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name='Tab_Profile'
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <AntDesign name='user' size={24} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name='Tab_Settings'
+        component={SettingsScreen}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <AntDesign name='setting' size={24} color={color} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
 
 const Stack = createNativeStackNavigator();
-export default function AppStack() {
+function HomeStack() {
   return (
     <Stack.Navigator
       initialRouteName='Home'
@@ -19,5 +84,3 @@ export default function AppStack() {
     </Stack.Navigator>
   );
 }
-
-const styles = StyleSheet.create({});

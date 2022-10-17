@@ -14,14 +14,12 @@ import { Entypo, Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import { useFonts } from 'expo-font';
 
-import colors from '../config/colors';
-import SPACING from '../config/SPACING';
-import avatar from '../../assets/avatar.png';
-import Header from '../components/UIComponents/Header';
-import coffee from '../config/coffees';
-import SearchBar from '../components/UIComponents/SearchBar';
-import Categories from '../components/Categories';
-import coffees from '../config/coffees';
+import colors from '../../config/colors';
+import SPACING from '../../config/SPACING';
+import Header from '../../components/UIComponents/Header';
+import SearchBar from '../../components/UIComponents/SearchBar';
+import Categories from '../../components/Categories';
+import coffees from '../../config/coffees';
 
 const { width } = Dimensions.get('window');
 
@@ -29,7 +27,7 @@ export default function HomeScreen() {
   const [activeCategoryId, setActiveCategoryId] = useState(null);
   const navigation = useNavigation();
   const [fontsLoaded] = useFonts({
-    Rottweiler: require('../../assets/fonts/Rottweiler.ttf'),
+    Rottweiler: require('../../../assets/fonts/Rottweiler.ttf'),
   });
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
@@ -54,7 +52,7 @@ export default function HomeScreen() {
       <SafeAreaView style={styles.container}>
         <ScrollView>
           <View style={styles.tagline}>
-            <Text style={styles.taglineText}>Find the best coffee for you</Text>
+            <Text style={styles.taglineText}>Find the best Coffee for you</Text>
           </View>
           {/* Searchbar */}
           <SearchBar />
@@ -151,9 +149,10 @@ const styles = StyleSheet.create({
   },
   taglineText: {
     color: colors.white,
-    fontSize: SPACING * 4.5,
+    fontSize: SPACING * 5.5,
     fontWeight: '600',
     fontFamily: 'Rottweiler',
+    paddingLeft: SPACING,
   },
   imgWrapper: {
     flexDirection: 'row',

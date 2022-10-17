@@ -1,10 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-import AppStack from './AppStack/AppStack';
+import RootNavigator from './RootNavigator';
 
 export default function Routes() {
-  return <AppStack />;
+  return <RootNavigator />;
 }
-
-const styles = StyleSheet.create({});

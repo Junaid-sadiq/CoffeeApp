@@ -9,25 +9,25 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 
-import SPACING from '../config/SPACING';
-import colors from '../config/colors';
-import Header from '../components/UIComponents/Header';
+import SPACING from '../../config/SPACING';
+import colors from '../../config/colors';
+import Header from '../../components/UIComponents/Header';
 
-export default function ProfileScreen() {
+export default function BasketScreen() {
   const navigation = useNavigation();
-  const goBack = () => {
+  /*  const goBack = () => {
     navigation.goBack();
-  };
+  }; */
   return (
-    <SafeAreaView style={styles.container}>
-      <Header title='Profile' />
-      <TouchableOpacity onPress={goBack} style={styles.backButton}>
+    <View style={styles.container}>
+      <Header title='Cart' />
+      {/*   <TouchableOpacity onPress={goBack} style={styles.backButton}>
         <Ionicons
           name='chevron-back'
           size={SPACING * 4}
           color={colors['white-smoke']}
         />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <Text style={styles.text}>Go To Home Screen</Text>
       <TouchableOpacity
         onPress={() => navigation.navigate('Home')}
@@ -44,7 +44,7 @@ export default function ProfileScreen() {
           Home
         </Text>
       </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   );
 }
 
