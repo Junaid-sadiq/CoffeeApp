@@ -9,6 +9,7 @@ import { AntDesign, Feather, FontAwesome5 } from '@expo/vector-icons';
 import SettingsScreen from '../../screens/App/SettingsScreen';
 import colors from '../../config/colors';
 import BasketScreen from '../../screens/App/BasketScreen';
+import FavoritesScreen from '../../screens/App/FavoritesScreen';
 import SPACING from '../../config/SPACING';
 
 const Tab = createBottomTabNavigator();
@@ -50,11 +51,11 @@ export default function AppStack() {
         }}
       />
       <Tab.Screen
-        name='Tab_Profile'
-        component={ProfileScreen}
+        name='Tab_Favorites'
+        component={FavoritesScreen}
         options={{
           tabBarIcon: ({ color }) => (
-            <AntDesign name='user' size={24} color={color} />
+            <AntDesign name='heart' size={24} color={color} />
           ),
         }}
       />

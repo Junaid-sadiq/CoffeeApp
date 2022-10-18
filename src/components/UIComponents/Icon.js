@@ -1,6 +1,20 @@
 import React from 'react';
-import { Feather } from '@expo/vector-icons';
+import {
+  AntDesign,
+  Feather,
+  FontAwesome5,
+  FontAwesome,
+  MaterialCommunityIcons,
+  Octicons,
+  Ionicons,
+} from '@expo/vector-icons';
 
-export default function Icon({ name, size, color, style }) {
-  return <Feather name={name} size={size} style={style} color={color} />;
+export default function Icon({
+  IconLiberary = Feather,
+  name,
+  size,
+  color,
+  style,
+}) {
+  return <IconLiberary name={name} size={size} style={style} color={color} />;
 }

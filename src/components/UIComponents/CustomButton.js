@@ -1,5 +1,6 @@
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import colors from '../../config/colors';
 import Icon from './Icon';
 
 export default function CustomButton({
@@ -10,14 +11,24 @@ export default function CustomButton({
   fgColor,
   leftIconName,
   RightIconName,
+  IconLiberary,
   color,
   style,
 }) {
   return (
-    <Pressable onPress={onPress} style={styles.container}>
+    <Pressable
+      onPress={onPress}
+      style={[
+        styles.container,
+        styles[`container_${type}`],
+        bgColor ? { backgroundColor: bgColor } : {},
+        style,
+      ]}
+    >
       {leftIconName ? (
         <Icon
           name={leftIconName}
+          IconLiberary={IconLiberary}
           size={22}
           color={color}
           style={styles.leftIcon}
@@ -33,7 +44,12 @@ export default function CustomButton({
         {text}
       </Text>
       {RightIconName ? (
-        <Icon name={RightIconName} size={22} color='white' />
+        <Icon
+          IconLiberary={IconLiberary}
+          name={RightIconName}
+          size={22}
+          color={color}
+        />
       ) : null}
     </Pressable>
   );
@@ -41,36 +57,35 @@ export default function CustomButton({
 
 const styles = StyleSheet.create({
   container: {
+    marginHorizontal: 10,
+    marginVertical: 14,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    padding: 15,
+    borderRadius: 20,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
-    padding: 15,
-    marginHorizontal: 20,
-    marginVertical: 10,
-    borderRadius: 9,
-    elevation: 20,
   },
   container_PRIMARY: {
-    backgroundColor: 'blue',
-    shadowColor: '#0057FF',
+    backgroundColor: colors.primary,
   },
   container_SECONDARY: {
-    borderColor: 'blue',
+    borderColor: colors.primary,
     borderWidth: 2,
   },
   container_TERTIARY: {},
   text: {
-    color: 'white',
+    color: colors['white'],
     fontWeight: 'bold',
     paddingHorizontal: 20,
-    alignItems: 'center,',
+    alignItems: 'center',
   },
   text_SECONDARY: {
-    color: 'blue',
+    color: colors.primary,
   },
   text_TERTIARY: {
-    color: 'grey',
+    color: colors['white'],
   },
   leftIcon: {
     paddingRight: 10,

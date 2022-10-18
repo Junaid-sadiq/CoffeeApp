@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -13,17 +13,54 @@ import SPACING from '../../config/SPACING';
 import colors from '../../config/colors';
 import Header from '../../components/UIComponents/Header';
 import CustomButton from '../../components/UIComponents/CustomButton';
+import { useAuthContext } from '../../providers/AuthContext';
+import { color } from 'react-native-reanimated';
+import CustomInput from '../../components/UIComponents/CustomInput';
 
 export default function ProfileScreen() {
+  const { user, setUser } = useAuthContext();
+  const [userInput, setUserInput] = useState('');
   const navigation = useNavigation();
-  /*  const goBack = () => {
-    navigation.goBack();
-  }; */
+
+  const signIn = () => {
+    console.warn(user);
+    return setUser(userInput);
+  };
+  const signOut = () => {
+    setUser(null);
+  };
   return (
     <View style={styles.container}>
       <Header title='Profile' />
       <View style={styles.prof}>
-        {/*  <CustomButton title='signOut' leftIconName='arrow-left' /> */}
+        <CustomInput
+          placeholder='Email'
+          autoCapitalize='none'
+          placeholderTextColor={colors['white-smoke']}
+          leftIconName='user'
+          iconLiberary={AntDesign}
+          value={userInput}
+          color={colors['white-smoke']}
+          setValue={setUserInput}
+        />
+        <CustomButton
+          text='Sign in'
+          IconLiberary={AntDesign}
+          leftIconName={'login'}
+          style={styles.signIn}
+          color={colors.white}
+          onPress={signIn}
+        />
+
+        <CustomButton
+          text='Sign out'
+          type={'TERTIARY'}
+          IconLiberary={AntDesign}
+          leftIconName={'logout'}
+          style={styles.signIn}
+          color={colors.white}
+          onPress={signOut}
+        />
       </View>
     </View>
   );
@@ -48,6 +85,9 @@ const styles = StyleSheet.create({
     marginTop: SPACING * 8,
   },
   prof: {
-    marginTop: SPACING * 9,
+    marginTop: SPACING * 10,
+  },
+  signIn: {
+    /*    width: '90%', */
   },
 });

@@ -10,7 +10,7 @@ import {
   View,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Entypo, Ionicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import { useFonts } from 'expo-font';
 
@@ -46,6 +46,9 @@ export default function HomeScreen() {
   const goToProfile = () => {
     navigation.navigate('Profile');
   };
+  const addToFavorites = () => {
+    console.warn('Added to Favorites');
+  };
   return (
     <>
       <Header />
@@ -68,9 +71,18 @@ export default function HomeScreen() {
               })
               .map((coffee) => (
                 <View key={coffee.id} style={styles.coffeeDetails}>
-                  <BlurView intensity={95} style={styles.imageContainer}>
-                    <TouchableOpacity style={styles.images}>
-                      <Image style={styles.image} source={coffee.image} />
+                  <BlurView
+                    tint='dark'
+                    intensity={95}
+                    style={styles.imageContainer}
+                  >
+                    <TouchableOpacity
+                      style={{
+                        height: 150,
+                        width: '100%',
+                      }}
+                    >
+                      <Image source={coffee.image} style={styles.images} />
                       <View style={styles.starContainer}>
                         <BlurView
                           tint='dark'
@@ -78,12 +90,17 @@ export default function HomeScreen() {
                           style={styles.star}
                         >
                           <Ionicons
-                            name='star'
-                            size={SPACING * 1.7}
-                            color={colors.primary}
                             style={styles.icon}
+                            name='star'
+                            color={colors.primary}
+                            size={SPACING * 1.7}
                           />
-                          <Text style={styles.ratingNumber}>
+                          <Text
+                            style={{
+                              color: colors.white,
+                              marginLeft: SPACING / 2,
+                            }}
+                          >
                             {coffee.rating}
                           </Text>
                         </BlurView>
@@ -92,9 +109,25 @@ export default function HomeScreen() {
                     <Text numberOfLines={2} style={styles.coffeeText}>
                       {coffee.name}
                     </Text>
-                    <Text numberOfLines={2} style={styles.coffeeDescription}>
+                    <Text numberOfLines={1} style={styles.coffeeDescription}>
                       {coffee.included}
                     </Text>
+                    <View style={styles.bottomRow}>
+                      <View style={styles.bRow}>
+                        <Text style={styles.dollarSign}>$</Text>
+                        <Text style={styles.price}>{coffee.price}</Text>
+                      </View>
+                      <TouchableOpacity
+                        onPress={addToFavorites}
+                        style={styles.addButton}
+                      >
+                        <Ionicons
+                          name='add'
+                          size={SPACING * 2}
+                          color={colors.white}
+                        />
+                      </TouchableOpacity>
+                    </View>
                   </BlurView>
                 </View>
               ))}
@@ -166,12 +199,12 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   imageContainer: {
-    marginHorizontal: 2,
     padding: SPACING,
   },
   images: {
-    height: 150,
     width: '100%',
+    height: '100%',
+    borderRadius: SPACING * 2,
   },
   image: {
     width: '100%',
@@ -186,7 +219,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   star: {
-    fleDirection: 'row',
+    flexDirection: 'row',
     padding: SPACING - 2,
   },
   icon: {
@@ -206,5 +239,26 @@ const styles = StyleSheet.create({
   coffeeDescription: {
     color: colors.secondary,
     fontSize: SPACING * 1.2,
+  },
+  bottomRow: {
+    marginVertical: SPACING / 2,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  bRow: { flexDirection: 'row' },
+  dollarSign: {
+    color: colors.primary,
+    marginRight: SPACING / 2,
+    fontSize: SPACING * 1.6,
+  },
+  price: {
+    color: colors.white,
+    fontSize: SPACING * 1.6,
+  },
+  addButton: {
+    backgroundColor: colors.primary,
+    padding: SPACING / 2,
+    borderRadius: SPACING,
   },
 });

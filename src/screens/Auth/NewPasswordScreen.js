@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
-export default function SignInScree() {
+export default function NewPasswordScreen() {
   return (
     <View>
-      <Text>SignInScree</Text>
+      <Text>NewPasswordScreen</Text>
     </View>
   );
 }

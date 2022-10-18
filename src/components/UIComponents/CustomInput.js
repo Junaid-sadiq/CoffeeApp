@@ -2,6 +2,7 @@ import React from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import Icon from './Icon';
+import colors from '../../config/colors';
 export default function CustomInput({
   value,
   setValue,
@@ -11,12 +12,19 @@ export default function CustomInput({
   handlePasswordVisibility,
   placeholder,
   size,
+  IconLiberary,
+  color,
   ...otherProps
 }) {
   return (
     <View style={styles.container}>
       {leftIconName ? (
-        <Icon name={leftIconName} size={24} color='grey' />
+        <Icon
+          IconLiberary={IconLiberary}
+          name={leftIconName}
+          size={24}
+          color={color}
+        />
       ) : null}
       <TextInput
         {...otherProps}
@@ -33,8 +41,9 @@ export default function CustomInput({
         >
           <Icon
             name={rightIcon}
+            IconLiberary={IconLiberary}
             size={24}
-            color='grey'
+            color={color}
             style={{
               paddingRight: 10,
             }}
@@ -49,22 +58,24 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 10,
     marginVertical: 14,
-    backgroundColor: '#E5E5E5',
     paddingVertical: 15,
     paddingHorizontal: 20,
+    backgroundColor: colors.light,
     borderRadius: 20,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     elevation: 20,
-    shadowColor: '#242424',
+    shadowColor: '#dedede',
   },
   text: {
-    marginRight: 10,
+    marginLeft: 10,
     fontSize: 18,
     fontWeight: 'bold',
     flex: 1,
+    color: colors['dark-light'],
     alignItems: 'center',
+    justifyContent: 'center',
     paddingLeft: 10,
     /*   outlineWidth: 0, */
   },
