@@ -1,0 +1,32 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-coffeeapp-staging-220948-authRole",
+      "UnauthRoleArn": "arn:aws:iam::965647917252:role/amplify-coffeeapp-staging-220948-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::965647917252:role/amplify-coffeeapp-staging-220948-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-coffeeapp-staging-220948-deployment",
+      "UnauthRoleName": "amplify-coffeeapp-staging-220948-unauthRole",
+      "StackName": "amplify-coffeeapp-staging-220948",
+      "StackId": "arn:aws:cloudformation:us-east-1:965647917252:stack/amplify-coffeeapp-staging-220948/94fb1c70-4f31-11ed-9b1a-1204628369e5",
+      "AmplifyAppId": "d1nsfln04f5s8o"
+    },
+    "categories": {
+      "auth": {
+        "coffeeapp": {
+          "userPoolId": "us-east-1_z5RHIoI88",
+          "userPoolName": "UEats-staging",
+          "webClientId": "74mol8t96mm5sea217sovehj9f",
+          "nativeClientId": "74mol8t96mm5sea217sovehj9f",
+          "identityPoolId": "us-east-1:6a52ddbe-52a0-4902-a778-8bb389709555",
+          "identityPoolName": "testAuthIdentityPool__staging",
+          "allowUnauthenticatedIdentities": false,
+          "authRoleArn": "arn:aws:iam::965647917252:role/amplify-ueats-staging-220126-authRole",
+          "authRoleName": "amplify-ueats-staging-220126-authRole",
+          "unauthRoleArn": "arn:aws:iam::965647917252:role/amplify-ueats-staging-220126-unauthRole",
+          "unauthRoleName": "amplify-ueats-staging-220126-unauthRole"
+        }
+      }
+    }
+  }
+}

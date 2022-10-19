@@ -1,5 +1,7 @@
 export default {
   primary: '#D17842',
+  'dark-prime': '#603808',
+  'slightly-dark': '#7F5539',
   secondary: '#52555A',
   dark: '#0C0F14',
   'dark-light': '#2E333E',

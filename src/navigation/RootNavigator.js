@@ -8,7 +8,8 @@ export default function RootNavigator() {
   const { user } = useAuthContext();
   return (
     <NavigationContainer>
-      {user ? <AppStack /> : <AuthStack />}
+      {/*  {user ? <AppStack /> :} */}
+      <AuthStack />
     </NavigationContainer>
   );
 }

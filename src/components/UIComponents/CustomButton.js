@@ -68,13 +68,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container_PRIMARY: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors['slightly-dark'],
   },
   container_SECONDARY: {
     borderColor: colors.primary,
     borderWidth: 2,
   },
-  container_TERTIARY: {},
+  container_TERTIARY: {
+    color: colors.white,
+  },
   text: {
     color: colors['white'],
     fontWeight: 'bold',

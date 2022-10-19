@@ -5,6 +5,8 @@ import Icon from './Icon';
 import colors from '../../config/colors';
 export default function CustomInput({
   value,
+  type = 'PRIMARY',
+  state = 'DEFAULT',
   setValue,
   secureTextEntry,
   leftIconName,
@@ -13,11 +15,22 @@ export default function CustomInput({
   placeholder,
   size,
   IconLiberary,
+  backgroundColor,
   color,
+  bgColor,
+  style,
   ...otherProps
 }) {
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        styles[`container_${type}`],
+        styles[`error_${state}`],
+        bgColor ? { backgroundColor: bgColor } : {},
+        style,
+      ]}
+    >
       {leftIconName ? (
         <Icon
           IconLiberary={IconLiberary}
@@ -60,13 +73,27 @@ const styles = StyleSheet.create({
     marginVertical: 14,
     paddingVertical: 15,
     paddingHorizontal: 20,
-    backgroundColor: colors.light,
     borderRadius: 20,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    elevation: 20,
-    shadowColor: '#dedede',
+  },
+  container_PRIMARY: {
+    backgroundColor: colors['dark-prime'],
+  },
+  error_DEFAULT: {},
+  error_SECONDARY: {
+    borderBottomColor: 'red',
+  },
+  container_SECONDARY: {
+    backgroundColor: colors['slightly-dark'],
+  },
+  container_TERTIARY: {
+    borderBottomWidth: 1,
+    borderColor: colors['slightly-dark'],
+    borderRadius: 0,
+    paddingVertical: 5,
+    marginLeft: 0,
   },
   text: {
     marginLeft: 10,
