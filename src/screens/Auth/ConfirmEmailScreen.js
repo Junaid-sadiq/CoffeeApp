@@ -171,7 +171,7 @@ export default function SignInScreen() {
             onPress={onResendPress}
             RightIconName='reload1'
             type='TERTIARY'
-            bgColor={'brown'}
+            bgColor={colors['primary']}
             color={colors['white']}
             IconLiberary={AntDesign}
           />
