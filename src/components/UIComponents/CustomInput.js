@@ -37,6 +37,7 @@ export default function CustomInput({
           name={leftIconName}
           size={24}
           color={color}
+          style={[styles[`error_${state}`]]}
         />
       ) : null}
       <TextInput
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginVertical: 14,
     paddingVertical: 15,
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
     borderRadius: 20,
     flexDirection: 'row',
     alignItems: 'center',

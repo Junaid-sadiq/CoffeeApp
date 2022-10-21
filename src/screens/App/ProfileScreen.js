@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   TouchableOpacity,
   StyleSheet,
   Text,
   View,
+  Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 
-import SPACING from '../../config/SPACING';
+import { Auth } from 'aws-amplify';
+
 import colors from '../../config/colors';
+import SPACING from '../../config/SPACING';
 import Header from '../../components/UIComponents/Header';
 import CustomButton from '../../components/UIComponents/CustomButton';
 import { useAuthContext } from '../../providers/AuthContext';
-import { color } from 'react-native-reanimated';
 import CustomInput from '../../components/UIComponents/CustomInput';
 
 export default function ProfileScreen() {
@@ -27,8 +29,11 @@ export default function ProfileScreen() {
     return setUser(userInput);
   };
   const signOut = () => {
-    setUser(null);
+    Auth.signOut();
+    /*  setUser(null); */
+    Alert.alert('Successfully Signed Out');
   };
+
   return (
     <View style={styles.container}>
       <Header title='Profile' />
@@ -40,6 +45,7 @@ export default function ProfileScreen() {
           leftIconName='user'
           iconLiberary={AntDesign}
           value={userInput}
+          type='TERTIARY'
           color={colors['white-smoke']}
           setValue={setUserInput}
         />
@@ -76,7 +82,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors['dark'],
     margin: SPACING * 4,
     padding: SPACING,
-    borderRadius: SPACING * 2,
   },
   text: {
     color: colors.white,

@@ -3,6 +3,7 @@ import {
   Image,
   StyleSheet,
   ImageBackground,
+  TouchableOpacity,
   Text,
   View,
   ActivityIndicator,
@@ -23,7 +24,6 @@ import logo from '../../../assets/splash.png';
 import { passwordResentSchema } from '../../utils';
 import CustomInput from '../../components/UIComponents/CustomInput';
 import Icon from '../../components/UIComponents/Icon';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const image = require('../../../assets/SignIn.png');
 
@@ -48,14 +48,14 @@ export default function SignInScreen() {
     }
     setLoading(false);
   };
-  const onPress = () => {
+  const goBack = () => {
     navigation.goBack();
   };
   const onSignInPressed = () => {
     navigation.navigate('SignIn');
   };
   const onVerifyPress = () => {
-    navigation.navigate('NewPassword');
+    navigation.navigate('ConfirmEmail');
   };
   return (
     <KeyboardAwareScrollView
@@ -64,7 +64,7 @@ export default function SignInScreen() {
     >
       <ImageBackground source={image} resizeMode='cover' style={styles.image}>
         <LoadingIndicator visible={loading} />
-        <TouchableOpacity style={styles.backIcon} onPress={onPress}>
+        <TouchableOpacity style={styles.backIcon} onPress={goBack}>
           <Icon
             IconLiberary={Feather}
             name='arrow-left-circle'
@@ -72,7 +72,7 @@ export default function SignInScreen() {
             color='#fff'
           />
         </TouchableOpacity>
-        <Text style={styles.pageTitle}>Account Recovery</Text>
+        <Text style={styles.pageTitle}>Recover your account</Text>
         <View style={styles.container}>
           <Formik
             initialValues={{
@@ -109,6 +109,9 @@ export default function SignInScreen() {
                   error={errors.email}
                   visible={touched.email}
                 />
+                {errorState !== '' ? (
+                  <FormErrorMessage error={errorState} visible={true} />
+                ) : null}
                 <CustomButton
                   text={
                     loading ? (
@@ -180,7 +183,7 @@ const styles = StyleSheet.create({
   },
   backIcon: {
     position: 'absolute',
-    top: 120,
+    top: 200,
     left: 20,
   },
 });

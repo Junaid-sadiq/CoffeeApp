@@ -6,6 +6,7 @@ import {
   Text,
   View,
   ActivityIndicator,
+  TouchableOpacity,
 } from 'react-native';
 import { AntDesign, Feather, Ionicons } from '@expo/vector-icons';
 import { useAuthContext } from '../../providers/AuthContext';
@@ -156,6 +157,27 @@ export default function SignInScreen() {
             type='TERTIARY'
             fgColor={colors['dark-prime']}
           />
+          <View style={{}}>
+            <Text
+              style={{
+                textAlign: 'center',
+                color: colors['dark-prime'],
+              }}
+            >
+              Don't have an account?
+              <TouchableOpacity onPress={onSignUpPressed}>
+                <Text
+                  style={{
+                    textAlign: 'center',
+
+                    color: colors['white'],
+                  }}
+                >
+                  Sign Up
+                </Text>
+              </TouchableOpacity>
+            </Text>
+          </View>
         </View>
         <View style={{ marginTop: 120 }}></View>
       </ImageBackground>
