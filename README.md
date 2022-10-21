@@ -5,9 +5,8 @@ Coffee House App built with expo and aws-amplify
 <table>
   <tr>
     <td><img src="./assets/screenshots/signIn.png" width="200"></td>
+     <td><img src="./assets/screenshots/signup.png" width="200"></td>
     <td><img src="./assets/screenshots/forgetpassword.png" width="200"></td>
- <td><img src="./assets/screenshots/signup.png" width="200"></td>
-    <td><img src="./screenshots/forgotPassword.png" width="200"></td> -->
   <tr>
   <tr>
     <td><img src="./assets/screenshots/home.png" width="200"></td>
