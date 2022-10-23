@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import { useFonts } from 'expo-font';
@@ -22,10 +22,10 @@ import Categories from '../../components/Categories';
 import coffees from '../../config/coffees';
 
 const { width } = Dimensions.get('window');
-
 export default function HomeScreen() {
   const [activeCategoryId, setActiveCategoryId] = useState(null);
   const navigation = useNavigation();
+  const route = useRoute();
   const [fontsLoaded] = useFonts({
     Rottweiler: require('../../../assets/fonts/Rottweiler.ttf'),
   });
@@ -43,11 +43,14 @@ export default function HomeScreen() {
     console.warn('Menu Pressed');
   };
 
-  const goToProfile = () => {
-    navigation.navigate('Profile');
-  };
   const addToFavorites = () => {
     console.warn('Added to Favorites');
+  };
+  /*   const id = route.params?.id;
+  console.warn(id);
+ */
+  const coffeeDetailsScreen = () => {
+    navigation.navigate('Product', { id: coffees.id });
   };
   return (
     <>
@@ -81,6 +84,7 @@ export default function HomeScreen() {
                         height: 150,
                         width: '100%',
                       }}
+                      onPress={coffeeDetailsScreen}
                     >
                       <Image source={coffee.image} style={styles.images} />
                       <View style={styles.starContainer}>

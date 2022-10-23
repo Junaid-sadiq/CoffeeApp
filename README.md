@@ -10,6 +10,7 @@ Coffee House App built with expo and aws-amplify
   <tr>
   <tr>
     <td><img src="./assets/screenshots/home.png" width="200"></td>
+    <td><img src="./assets/screenshots/Screenshot_1666552750.png" width="200"></td>
    <!--  <td><img src="./screenshots/turnOnNotifications.png" width="200"></td>
     <td><img src="./screenshots/exploreTab.png" width="200"></td>
     <td><img src="./screenshots/noSavedHomes.png" width="200"></td> -->

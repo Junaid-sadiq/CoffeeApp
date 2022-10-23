@@ -11,6 +11,7 @@ import colors from '../../config/colors';
 import BasketScreen from '../../screens/App/BasketScreen';
 import FavoritesScreen from '../../screens/App/FavoritesScreen';
 import SPACING from '../../config/SPACING';
+import coffees from '../../config/coffees';
 
 const Tab = createBottomTabNavigator();
 export default function AppStack() {
